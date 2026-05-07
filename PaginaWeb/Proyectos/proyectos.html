@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Live - Proyectos Visuales</title>
+    <link rel="stylesheet" href="proyectos.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="barra-navegacion">
+        <a href="../index.html" class="enlace-logo">
+            <div class="contenedor-logo">
+                <img src="../Imagenes/Logo_SmartLive.png" alt="Logotipo" class="logo-sitio">
+                <span class="nombre-marca">SMARTLIVE</span>
+            </div>
+        </a>
+        <nav>
+            <ul class="enlaces-nav">
+                <li><a href="../Formulario/formulario.html">Contacto</a></li>
+                <li><a href="../TerminosYCondiciones/tyc.html">Términos y Condiciones</a></li>
+                <li><a href="../PDP/pdp.html">Política de Privacidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-principal">
+        <div class="rejilla-proyectos">
+            <!-- Proyecto 1 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/16.jpg" alt="NeuroRobotics">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>NeuroRobotics (BCI + Robótica)</h3>
+                    <p>Control de robots mediante señales cerebrales y rehabilitación neurológica.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/17.png" alt="HIGÍA">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>HIGÍA – Robot Social Asistencial</h3>
+                    <p>Asistencia a personas mayores mediante IA conversacional y monitorización sanitaria.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/18.jpg" alt="Cultural Systems">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>Smart Cultural Systems</h3>
+                    <p>Entornos museísticos inteligentes con interacción mediante voz e IA.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 4 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/19.jpg" alt="SmartCAD">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>SmartCAD – Cajón de Arena Digital</h3>
+                    <p>Simulación táctica avanzada y planificación colaborativa en tiempo real.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 5 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/20.jpg" alt="SmartDiana">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>SmartDiana – Entrenamiento Inteligente</h3>
+                    <p>Dianas automatizadas con analítica de datos y simulación de escenarios.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 6 -->
+            <div class="tarjeta-interactiva">
+                <div class="contenedor-imagen">
+                    <img src="../Imagenes/21.jpg" alt="FireControl">
+                    <div class="capa-azul"></div>
+                </div>
+                <div class="info-tarjeta">
+                    <h3>SmartFireControl – Gestión de Incendios</h3>
+                    <p>Coordinación en tiempo real e integración de datos geoespaciales para emergencias.</p>
+                </div>
+            </div>
+            <div id="contenedor-asistente">
+    <div id="ventana-chat" style="display: none;">
+        <div id="cabecera-chat">
+            <div class="info-asistente">
+                <div class="avatar-asistente">SL</div>
+                <div>
+                    <div id="titulo-asistente">SMARTLIVE</div>
+                    <div id="subtitulo-asistente">Asistente Virtual</div>
+                </div>
+            </div>
+            <div id="controles-cabecera">
+                <span id="boton-reiniciar" style="cursor:pointer">↻</span>
+                <span id="boton-cerrar" style="cursor:pointer">&times;</span>
+            </div>
+        </div>
+
+        <div id="zona-mensajes">
+            <div id="indicador-escribiendo" style="display:none">Escribiendo...</div>
+        </div>
+
+        <div id="menu-opciones">
+            <button class="boton-opcion" onclick="irASeccion('../Formulario/formulario.html', 'Contacto')">Contacto</button>
+            <button class="boton-opcion" onclick="irASeccion('proyectos.html', 'Proyectos')">Proyectos</button>
+            <button class="boton-opcion" onclick="irASeccion('#faq', 'Preguntas')">FAQ</button>
+            <button class="boton-opcion" onclick="irASeccion('../TerminosYCondiciones/tyc.html', 'Términos')">Términos</button>
+        </div>
+    </div>
+
+    <!-- Botón Flotante -->
+    <div id="boton-flotante">
+        <span style="font-size: 30px;">💬</span>
+    </div>
+</div>
+    </main>
+    <footer class="pie-pagina-final">
+    <div class="contenedor-footer">
+        <div class="columna-footer">
+            <div class="contenedor-logo">
+                <img src="../Imagenes/Logo_SmartLive.png" alt="SmartLive Logo" class="logo-sitio">
+                <span class="nombre-marca">SMARTLIVE</span>
+            </div>
+            <p class="descripcion-footer">
+                Transformamos ideas en soluciones tecnológicas reales. Expertos en automatización, I+D+i y desarrollo de proyectos integrales.
+            </p>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Enlaces</h3>
+            <ul class="enlaces-footer">
+                <li><a href="../Formulario/formulario.html">Contacto</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Quiénes somos</a></li>
+                <li><a href="#">Servicios</a></li>
+            </ul>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Síguenos</h3>
+            <div class="redes-sociales">
+                <a href="#" class="icono-red" title="LinkedIn">in</a>
+                <a href="#" class="icono-red" title="Twitter/X">𝕏</a>
+                <a href="#" class="icono-red" title="Instagram">ig</a>
+            </div>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Legal</h3>
+            <ul class="enlaces-footer">
+                <li><a href="../TerminosYCondiciones/tyc.html">Términos y Condiciones</a></li>
+                <li><a href="../PDP/pdp.html">Política de Privacidad</a></li>
+                <li><a href="#">Política de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="barra-copyright">
+        <p>&copy; 2026 SMARTLIVE - Todos los derechos reservados.</p>
+    </div>
+    </footer>   
+</body>
+</html>

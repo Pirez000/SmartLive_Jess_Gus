@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador SmartLive</title>
+    <link rel="stylesheet" href="simulador.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="simulador.js"></script>
+</head>
+<body>
+
+   <div class="pantalla-dividida">
+    <div class="columna-izquierda">
+        <div class="tarjeta-simulador">
+            <header>
+                <h1>Validador de Proyectos</h1>
+                <p>Cuéntanos tu idea y verificaremos su viabilidad.</p>
+            </header>
+
+            <div class="formulario">
+                <label>Tipo de Proyecto</label>
+                <select id="tipo-proyecto">
+                    <option value="web">Desarrollo Web / E-commerce</option>
+                    <option value="app">Aplicación Móvil</option>
+                    <option value="robotica">Robótica e IA</option>
+                    <option value="impresion3d">Impresión 3D / Prototipado</option>
+                </select>
+
+                <label>Descripción del Proyecto</label>
+                <textarea id="descripcion-proyecto" placeholder="Ej: Quiero una app para gestionar el stock de mi tienda con IA..." rows="4"></textarea>
+
+                <button id="btn-validar">VERIFICAR VIABILIDAD</button>
+            </div>
+
+            <div id="resultado" class="seccion-resultado">
+                <div class="estado-viabilidad">
+                    <span class="punto-verde"></span> Viabilidad: <strong>Confirmada</strong>
+                </div>
+                <div class="linea-resultado"><strong>Plazo Estimado:</strong> <span id="res-plazo">-</span></div>
+                <p id="res-diagnostico"></p>
+                
+                <a href="../Formulario/formulario.html" class="btn-contacto-directo">SOLICITAR PRESUPUESTO REAL</a>
+            </div>
+        </div>
+    </div>
+    <div class="columna-derecha">
+        <div class="contenedor-logo-grande">
+            <img src="../Imagenes/Logo_SmartLive.png" alt="Logo SmartLive">
+            <div class="contenedor-boton-home">
+                <a href="../index.html" class="btn-inicio">← Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

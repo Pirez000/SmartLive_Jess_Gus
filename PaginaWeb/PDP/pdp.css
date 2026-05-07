@@ -1,0 +1,110 @@
+:root {
+    --azul-primario: #1e3a8a;    
+    --azul-oscuro: #0f172a;     
+    --cian-acento: #06b6d4;      
+    --fondo-claro: #f8fafc;     
+    --texto-principal: #334155;   
+    --texto-titulo: #0f172a;     
+    --blanco: #ffffff;          
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-claro);
+    color: var(--texto-principal);
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor-privacidad {
+    max-width: 850px;
+    margin: 40px auto;
+    background: var(--blanco);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.encabezado {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-primario) 100%); /* Degradado corporativo[cite: 3] */
+    color: var(--blanco);
+    padding: 50px 40px;
+    text-align: left;
+    position: relative;
+}
+
+.encabezado::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--cian-acento); /* Línea de acento[cite: 3] */
+}
+
+.logotipo {
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: var(--cian-acento);
+}
+
+.logotipo span {
+    color: var(--blanco);
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.cuerpo-contenido {
+    padding: 40px 60px;
+}
+
+.info-actualizacion {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cian-acento);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: var(--texto-titulo);
+    font-size: 22px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+}
+
+h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    background: var(--cian-acento);
+    margin-right: 12px;
+    border-radius: 2px;
+}
+
+.pie-legal {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 640px) {
+    .cuerpo-contenido { padding: 30px 20px; }
+    .encabezado { padding: 40px 20px; }
+    .encabezado h1 { font-size: 26px; }
+}

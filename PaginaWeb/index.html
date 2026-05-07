@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Live - Gestión de Proyectos</title>
+    <link rel="stylesheet" href="index_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="barra-navegacion">
+        <div class="contenedor-logo">
+            <img src="Imagenes/Logo_SmartLive.png" alt="Logotipo" class="logo-sitio">
+            <span class="nombre-marca">SMARTLIVE</span>
+        </div>
+        <nav>
+            <ul class="enlaces-nav">
+                <li><a href="Formulario/formulario.html">Contacto</a></li>
+                <li><a href="Simulador/simulador.html">Validador Proyectos</a></li>
+                <li><a href="TerminosYCondiciones/tyc.html">Términos y Condiciones</a></li>
+                <li><a href="PDP/pdp.html">Política de Privacidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="seccion-principal">
+        <div class="contenedor-contenido">
+            <div class="texto-contenido">
+                <h1 class="titulo-principal">SMART<span class="texto-fino">LIVE</span></h1>
+                <div class="descripcion">
+                    <p>Desarrollamos y gestionamos íntegramente tu proyecto.</p>
+                    <p>Te ayudamos en el diseño, la puesta en marcha y la comercialización del producto.</p>
+                    <p class="destacado">Tú únicamente cuéntanos tu idea y nosotros te ayudamos en todo lo demás.</p>
+                    <a href="#seccion-cartas" style="text-decoration: none; display: inline-block;">
+                    <button class="leer-mas">
+                        <span class="circulo" aria-hidden="true">
+                            <span class="icono flecha"></span>
+                        </span>
+                        <span class="texto-boton">Leer más</span>
+                    </button>
+                </a>
+                </div>
+            </div>
+            
+            <div id="canvas-container"></div>
+        </div>
+
+        <div class="contenedor-pasos">
+            <div class="tarjeta-paso">
+                <div class="numero-paso">01</div>
+                <div class="contenido-paso">
+                    <h3>Dinos qué necesitas</h3>
+                    <p>Cuéntanos cuáles son tus necesidades, qué te gustaría automatizar o el proyecto que deseas poner en marcha.</p>
+                </div>
+            </div>
+
+            <div class="tarjeta-paso">
+                <div class="numero-paso">02</div>
+                <div class="contenido-paso">
+                    <h3>Planificamos para ti</h3>
+                    <p>Nuestros técnicos analizarán las mejores tecnologías y los equipos que mejor se adaptan a tu proyecto específico.</p>
+                </div>
+            </div>
+
+            <div class="tarjeta-paso">
+                <div class="numero-paso">03</div>
+                <div class="contenido-paso">
+                    <h3>¡Disfruta tu entorno!</h3>
+                    <p>Llevamos a cabo tu proyecto hasta la puesta en marcha final, incluyendo el mantenimiento si fuese necesario.</p>
+                </div>
+            </div>
+        </div>
+        <section class="seccion-cartas">
+        <h2 id="seccion-cartas" class="titulo-cartas">Automatización de entornos y procesos: </h2>
+            <section id="proyectos-destacados">
+            <div class="contenedor-tarjetas">
+                
+                <article class="tarjeta">
+                <img src="Imagenes/16.jpg" alt="NeuroRobotics">
+                <div class="contenido">
+                    <h3>NeuroRobotics</h3>
+                    <p>Control de robots mediante señales cerebrales y rehabilitación.</p>
+                    <button class="leer-mas">
+                    <span class="circulo" aria-hidden="true">
+                        <span class="icono flecha"></span>
+                    </span>
+                    <span class="texto-boton">Leer más</span>
+                    </button>
+                </div>
+                </article>
+
+                <article class="tarjeta">
+                <img src="Imagenes/17.png" alt="HIGÍA">
+                <div class="contenido">
+                    <h3>HIGÍA</h3>
+                    <p>Asistencia a personas mayores mediante IA conversacional.</p>
+                    <button class="leer-mas">
+                    <span class="circulo" aria-hidden="true">
+                        <span class="icono flecha"></span>
+                    </span>
+                    <span class="texto-boton">Leer más</span>
+                    </button>
+                </div>
+                </article>
+
+                <article class="tarjeta">
+                <img src="Imagenes/18.jpg" alt="Smart Cultural">
+                <div class="contenido">
+                    <h3>Smart Cultural Systems</h3>
+                    <p>Entornos museísticos inteligentes con interacción por voz.</p>
+                    <button class="leer-mas">
+                    <span class="circulo" aria-hidden="true">
+                        <span class="icono flecha"></span>
+                    </span>
+                    <span class="texto-boton">Leer más</span>
+                    </button>
+                </div>
+                </article>
+            </div>
+
+            <div class="contenedor-accion">
+                <a href="Proyectos/proyectos.html" class="boton-proyectos">Todos los proyectos</a>
+            </div>
+            </section>
+        </section>
+    <section class="seccion-contadores">
+
+        <div class="contenedor-contador">
+            <div class="numero" data-meta="120">
+                +<span class="valor-variable">0</span>
+            </div>
+            <p class="etiqueta">proyectos</p>
+        </div>
+
+        <!-- Bloque Reseñas -->
+        <div class="contenedor-contador">
+            <div class="numero" data-meta="310">
+                +<span class="valor-variable">0</span>
+            </div>
+            <p class="etiqueta">reseñas</p>
+        </div>
+
+        <!-- Bloque Clientes -->
+        <div class="contenedor-contador">
+            <div class="numero" data-meta="500">
+                +<span class="valor-variable">0</span>
+            </div>
+            <p class="etiqueta">clientes</p>
+        </div>
+    </section>
+    <section class="cta-contacto">
+        <div class="contenedor-cta">
+            <div class="texto-cta">
+                <h2>¿Te interesa trabajar con nosotros?</h2>
+                <p>Estamos listos para dar vida a tu próximo proyecto tecnológico.</p>
+            </div>
+            <div class="accion-cta">
+                <a href="Formulario/formulario.html" class="boton-contacto-cta">Contáctanos ahora</a>
+            </div>
+        </div>
+    </section>
+    <section id= "faq" class="seccion-faqs">
+        <h2 class="titulo-faqs">Preguntas Frecuentes</h2>
+        
+        <div class="contenedor-faqs">
+            <div class="faq-item">
+                <button class="faq-pregunta" onclick="abrirFAQ(this)">
+                    ¿Cómo puedo iniciar un proyecto con SmartLive?
+                    <span class="icono-plus">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Cuéntanos tu idea. Nuestros técnicos planificarán cuales son las soluciones que mejor se adaptan a tu proyecto. Realizaremos un presupuesto personalizado y adaptado a tu proyecto. Una vez nos apruebes el presupuesto, nuestro departamento de desarrollo se pondrá en marcha y te facilitaremos un planning de trabajo con la fecha estimada de entrega.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pregunta" onclick="abrirFAQ(this)">
+                    ¿Con cuánta anticipación debo programar mi proyecto?
+                    <span class="icono-plus">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Trabajamos sobre proyectos 100% personalizados con lo cual no podemos estimar el tiempo de su puesta en marcha, hasta que no conocemos íntegramente el proyecto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pregunta" onclick="abrirFAQ(this)">
+                    ¿Cuánto cuesta?
+                    <span class="icono-plus">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Al trabajar sobre proyectos 100% personalizados no podemos estimar el coste de los mismos hasta que no les conozcamos íntegramente.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-pregunta" onclick="abrirFAQ(this)">
+                    ¿Qué sucede si algo no funciona?
+                    <span class="icono-plus">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Si por alguna causa no pudiéramos llevar a cabo el proyecto, valoraremos los ítems conseguidos y solo tendrás que abonar la parte del proyecto que se ha conseguido llevar a cabo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="contenedor-asistente">
+    <div id="ventana-chat" style="display: none;">
+        <div id="cabecera-chat">
+            <div class="info-asistente">
+                <div class="avatar-asistente">SL</div>
+                <div>
+                    <div id="titulo-asistente">SMARTLIVE</div>
+                    <div id="subtitulo-asistente">Asistente Virtual</div>
+                </div>
+            </div>
+            <div id="controles-cabecera">
+                <span id="boton-reiniciar" style="cursor:pointer">↻</span>
+                <span id="boton-cerrar" style="cursor:pointer">&times;</span>
+            </div>
+        </div>
+
+        <div id="zona-mensajes">
+            <div id="indicador-escribiendo" style="display:none">Escribiendo...</div>
+        </div>
+
+        <div id="menu-opciones">
+            <button class="boton-opcion" onclick="irASeccion('Formulario/formulario.html', 'Contacto')">Contacto</button>
+            <button class="boton-opcion" onclick="irASeccion('Proyectos/proyectos.html', 'Proyectos')">Proyectos</button>
+            <button class="boton-opcion" onclick="irASeccion('#faq', 'Preguntas')">FAQ</button>
+            <button class="boton-opcion" onclick="irASeccion('TerminosYCondiciones/tyc.html', 'Términos')">Términos</button>
+        </div>
+    </div>
+
+    <!-- Botón Flotante -->
+    <div id="boton-flotante">
+        <span style="font-size: 30px;">💬</span>
+    </div>
+</div>
+</main>
+
+    <footer class="pie-pagina-final">
+    <div class="contenedor-footer">
+        <div class="columna-footer">
+            <div class="contenedor-logo">
+                <img src="Imagenes/Logo_SmartLive.png" alt="SmartLive Logo" class="logo-sitio">
+                <span class="nombre-marca">SMARTLIVE</span>
+            </div>
+            <p class="descripcion-footer">
+                Transformamos ideas en soluciones tecnológicas reales. Expertos en automatización, I+D+i y desarrollo de proyectos integrales.
+            </p>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Enlaces</h3>
+            <ul class="enlaces-footer">
+                <li><a href="Formulario/formulario.html">Contacto</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Quiénes somos</a></li>
+                <li><a href="#">Servicios</a></li>
+            </ul>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Síguenos</h3>
+            <div class="redes-sociales">
+                <a href="#" class="icono-red" title="LinkedIn">in</a>
+                <a href="#" class="icono-red" title="Twitter/X">𝕏</a>
+                <a href="#" class="icono-red" title="Instagram">ig</a>
+            </div>
+        </div>
+
+        <div class="columna-footer">
+            <h3>Legal</h3>
+            <ul class="enlaces-footer">
+                <li><a href="TerminosYCondiciones/tyc.html">Términos y Condiciones</a></li>
+                <li><a href="PDP/pdp.html">Política de Privacidad</a></li>
+                <li><a href="#">Política de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="barra-copyright">
+        <p>&copy; 2026 SMARTLIVE - Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
