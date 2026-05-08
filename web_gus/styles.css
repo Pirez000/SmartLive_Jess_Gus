@@ -1,0 +1,339 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* ================= HERO ================= */
+.hero {
+    background: #f5f5f5;
+    padding: 80px 0;
+}
+
+.hero-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.hero-img img {
+    width: 100%;
+    border-radius: 12px;
+}
+.hero-subtitle {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 3.0rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #5ab9c1;
+}
+
+/* ================= SECCIONES ================= */
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.8rem;
+}
+
+/* ================= COLUMNAS ================= */
+.columns {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ================= CARDS ================= */
+.card {
+    flex: 1;
+    min-width: 250px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    border-color: #b7e1e3;
+}
+.card h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+}
+/* IMÁGENES */
+.card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+/* ================= ABOUT ================= */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    max-width: 500px;
+    margin: 15px 0;
+}
+
+.about-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-img img {
+    width: 250px;
+}
+/* ================= COLLAB ================= */
+
+.collab {
+    padding: 120px 0;
+    background: #f5f5f5
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SUBTITULO */
+
+.collab-subtitle {
+    display: inline-block;
+    padding: 8px 18px;
+    border: solid 1px #111;
+    border-radius: 30px;
+    color: #111;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+/* TITULO */
+
+.collab-title {
+    font-size: 3.2rem;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+/* TEXTO */
+
+.collab-text {
+    max-width: 850px;
+    margin: auto;
+    margin-bottom: 70px;
+    color: rgba(0,0,0,0.75);
+    line-height: 1.8;
+    font-size: 1.15rem;
+}
+
+/* GRID */
+
+.collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 35px;
+}
+
+/* CARDS */
+
+.collab-card {
+    background: #f5f5f5;
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 45px;
+    text-align: left;
+    border: 2px solid #b7e1e3;
+    transition: 0.35s;
+}
+
+/* HOVER */
+
+.collab-card:hover {
+    transform: translateY(-8px);
+    background: #b7e1e3;
+}
+
+/* ICONO */
+
+.collab-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* TITULOS */
+
+.collab-card h3 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #111;
+}
+
+/* LISTAS */
+
+.collab-card ul {
+    padding-left: 18px;
+}
+
+.collab-card li {
+    margin-bottom: 18px;
+    color: rgba(0,0,0,0.8);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+/* ================= COLORES POR SECCIÓN ================= */
+.services {
+    background: #b7e1e3;
+}
+
+.projects {
+    background: #b7e1e3;
+}
+
+.about {
+    background: #f5f5f5;
+}
+
+.collab {
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.cta {
+    text-align: center;
+    background: #f5f5f5;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .hero-content,
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .columns {
+        flex-direction: column;
+    }
+
+    .btn-header {
+        display: none;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+}
+/* ================= FAQ ================= */
+
+.faq {
+    background: #b7e1e3;
+    padding: 100px 0;
+}
+
+.faq .container {
+    max-width: 900px;
+}
+
+/* ITEM */
+.faq-item {
+    border-bottom: 1px solid #ccc;
+    padding: 25px 0;
+}
+
+/* PREGUNTA */
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0094d8;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* HOVER */
+.faq-question:hover {
+    color: #0077cc;
+}
+
+/* RESPUESTA */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+/* TEXTO */
+.faq-answer p {
+    margin-top: 20px;
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* ACTIVO */
+.faq-item.active .faq-answer {
+    max-height: 300px;
+}
