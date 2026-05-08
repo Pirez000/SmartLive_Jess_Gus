@@ -1,0 +1,785 @@
+/* 1. RESET Y BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* 2. FONDO 3D */
+#fondo-3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: #ffffff;
+    transition: opacity 0.8s ease-out; 
+    pointer-events: none; 
+}
+
+/* 3. CONTENEDOR PRINCIPAL */
+#contenedor-principal {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    /* CAMBIO: De mandatory a proximity para evitar el "bloqueo" entre secciones largas */
+    scroll-snap-type: y proximity; 
+    scroll-behavior: smooth;
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. SECCIONES (PROYECTOS Y RULETA) */
+.contenedor-proyectos-vertical,
+.contenedor-rotador,
+.contenedor-horizontal-bloqueado {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal; /* CAMBIO: De 'always' a 'normal' para que el paso entre ellas sea fluido */
+}
+
+/* 4. SECCIONES ESTÁNDAR (INICIO Y CONTACTO) */
+.seccion-pantalla {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* CAMBIO: No permite saltarse la sección */
+    background: transparent !important;
+}
+
+/* 5. SECCIÓN DE CARTAS HORIZONTALES (BLOQUEADA) */
+.contenedor-horizontal-bloqueado {
+    height: 400vh; 
+    position: relative;
+    /* CAMBIO: Ahora sí tiene snap para que se fije al entrar */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.escena-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.pista-cartas {
+    display: flex;
+    gap: 15vw;
+    padding: 0 20vw;
+    position: absolute;
+    left: 0;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.carta-horizontal {
+    min-width: 380px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 35px;
+    padding: 50px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carta-horizontal .num {
+    font-family: 'Orbitron';
+    font-size: 5rem;
+    color: #5ab9c1;
+    opacity: 0.15;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.carta-horizontal h3 { font-family: 'Orbitron'; font-size: 1.6rem; margin-bottom: 20px; color: #000; }
+.carta-horizontal p { font-size: 1.1rem; line-height: 1.6; color: #333; }
+
+/* 6. HEADER Y BOTONES */
+#cabecera-superior {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(242, 242, 242, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.contenedor-logo { display: flex; align-items: center; gap: 15px; }
+.imagen-logo { height: 60px; width: auto; }
+.logotipo-texto { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 2px; color: #000; }
+
+.navegacion { display: flex; gap: 10px; }
+.enlace-nav {
+    text-decoration: none; color: #000; padding: 10px 20px;
+    font-weight: 700; text-transform: uppercase; border-radius: 50px;
+    transition: 0.3s; font-size: 0.8rem;
+}
+.enlace-nav:hover { background: #5ab9c1; color: white; }
+
+.boton-contacto-neon {
+    text-decoration: none; color: #5ab9c1; padding: 10px 22px;
+    border: 2px solid #5ab9c1; border-radius: 50px; font-weight: 700;
+    font-size: 0.8rem; transition: 0.3s;
+}
+.boton-contacto-neon:hover { background: #5ab9c1; color: white; box-shadow: 0 0 20px #5ab9c1; }
+
+/* --- ESTILOS DE TEXTO --- */
+.contenido-central { text-align: center; max-width: 900px; z-index: 2; }
+
+.titulo-tech {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    font-weight: 900;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.frase-fuerte {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.frase-suave { font-size: 1.2rem; line-height: 1.5; color: #444; max-width: 750px; margin: 0 auto; }
+
+.boton-especialidades {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 18px 45px;
+    border: 2px solid #000;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.boton-especialidades:hover { background: #000; color: #fff; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* --- SECCIÓN RULETA --- */
+.contenedor-rotador {
+    height: 500vh; 
+    position: relative;
+    /* CAMBIO: Snap al inicio para bloquear el scroll aquí */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.escena-sticky-circulo {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.anillo-especialidades {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border: 1px dashed rgba(90, 185, 193, 0.4);
+    border-radius: 50%;
+    left: -200px;
+    transition: transform 0.2s ease-out;
+}
+
+.punto-especialidad {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-300px);
+    font-family: 'Orbitron';
+    font-size: 0.9rem;
+    color: #5ab9c1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.punto-especialidad span {
+    display: inline-block;
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(90, 185, 193, 0.2);
+}
+
+.info-especialidad { margin-left: 45vw; max-width: 450px; position: relative; height: 200px; }
+
+.detalle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(50px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.detalle.activo { opacity: 1; transform: translateY(-50%) translateX(0); }
+.detalle h3 { font-family: 'Orbitron'; font-size: 2.2rem; color: #5ab9c1; margin-bottom: 20px; }
+.detalle p { font-size: 1.2rem; line-height: 1.6; color: #333; }
+
+/* --- CONTACTO --- */
+#contacto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: #ffffff; /* O el color que prefieras */
+    position: relative;
+    z-index: 10;
+}
+
+.contenido-contacto {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animación de entrada corregida */
+.animar-entrada {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.animar-entrada.revelado {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.bloque-texto-contacto {
+    margin: 30px 0;
+    width: 100%;
+}
+
+/* Ajuste del título para que no se rompa en móvil */
+#contacto .titulo-tech {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+#contacto .frase-fuerte {
+    color: #5ab9c1;
+    margin-bottom: 10px;
+}
+
+/* Botón final centrado */
+.boton-contacto-final {
+    display: inline-block;
+    padding: 20px 50px;
+    background: transparent;
+    border: 2px solid #5ab9c1;
+    color: #5ab9c1;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    margin-top: 20px;
+}
+
+.boton-contacto-final:hover {
+    background: #5ab9c1;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(90, 185, 193, 0.5);
+    transform: scale(1.05);
+}
+
+/* EFECTO NÚCLEO DE IA */
+.nucleo-ia-brillo {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(90, 185, 193, 0.4) 0%, rgba(90, 185, 193, 0) 70%);
+    border-radius: 50%;
+    left: -50px; /* Ajustado para que el centro del brillo coincida con el borde del anillo */
+    filter: blur(30px);
+    animation: pulsoNucleo 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes pulsoNucleo {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+.anillo-especialidades {
+    position: absolute;
+    width: 700px; /* Un poco más grande */
+    height: 700px;
+    border: 2px double rgba(90, 185, 193, 0.5);
+    border-radius: 50%;
+    left: -350px; /* Metemos la mitad en el borde izquierdo */
+    transition: transform 0.3s cubic-bezier(0.1, 0.4, 0.3, 1);
+    box-shadow: inset 0 0 50px rgba(90, 185, 193, 0.2), 0 0 30px rgba(90, 185, 193, 0.1);
+}
+
+/* TEXTO GRANDE Y CENTRADO */
+.info-especialidad {
+    position: relative;
+    width: 50%; /* Ocupa la mitad derecha */
+    height: 400px;
+    margin-left: 35%; /* Centrado visual respecto al resto de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detalle {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    /* Efecto: Sale de derecha a izquierda */
+    transform: translateX(150px); 
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    text-align: left;
+}
+
+.detalle.activo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.detalle h3 {
+    font-family: 'Orbitron';
+    font-size: 3.5rem; /* ¡Mucho más grande! */
+    color: #000;
+    margin-bottom: 20px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.detalle p {
+    font-size: 1.4rem;
+    color: #444;
+    max-width: 600px;
+    border-left: 4px solid #5ab9c1;
+    padding-left: 20px;
+}
+
+/* SECCIÓN PROYECTOS */
+.contenedor-proyectos-vertical {
+    height: 600vh; /* 100vh de entrada + 100vh por cada proyecto */
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.proyectos-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.titulo-seccion-bg {
+    position: absolute;
+    font-family: 'Orbitron';
+    font-size: 15vw;
+    color: rgba(90, 185, 193, 0.03);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.contenedor-cards-proyectos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.proyecto-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Efecto de entrada para los de la izquierda */
+.proyecto-item.left { transform: translate(-70%, -50%) scale(0.8) rotateY(20deg); }
+/* Efecto de entrada para los de la derecha */
+.proyecto-item.right { transform: translate(-30%, -50%) scale(0.8) rotateY(-20deg); flex-direction: row-reverse; }
+
+.proyecto-item.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+}
+
+.proy-info { width: 40%; }
+.proy-num { font-family: 'Orbitron'; color: #5ab9c1; font-size: 1.5rem; display: block; margin-bottom: 10px; }
+.proy-info h3 { font-family: 'Orbitron'; font-size: 4rem; color: #000; margin-bottom: 20px; }
+.proy-info p { font-size: 1.3rem; color: #444; line-height: 1.6; }
+
+.proy-img {
+    width: 500px;
+    height: 350px;
+    background: #000;
+    color: #5ab9c1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron';
+    font-size: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.proy-img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(90, 185, 193, 0.2));
+}
+
+/* NAVEGACIÓN LATERAL POR PUNTOS */
+.scroll-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    z-index: 2000;
+}
+
+/* La línea vertical de fondo */
+.linea-progreso {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* El nombre de la sección al pasar el ratón */
+.dot span {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron';
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.dot:hover span {
+    opacity: 1;
+    right: 35px;
+}
+
+/* Punto Activo (Donde está el usuario) */
+.dot.activo {
+    background: #5ab9c1;
+    transform: scale(1.5);
+    box-shadow: 0 0 15px rgba(90, 185, 193, 0.6);
+}
+
+.dot.activo span {
+    background: #5ab9c1;
+}
+
+/* Ocultar la barra de scroll estándar del navegador para que sea más limpio */
+#contenedor-principal::-webkit-scrollbar {
+    width: 6px;
+}
+#contenedor-principal::-webkit-scrollbar-track {
+    background: transparent;
+}
+#contenedor-principal::-webkit-scrollbar-thumb {
+    background: rgba(90, 185, 193, 0.3);
+    border-radius: 10px;
+}
+
+.seccion-equipo-global {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    scroll-snap-align: start;
+}
+
+.contenedor-equipo {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.titulo-equipo {
+    font-family: 'Orbitron';
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #000;
+}
+
+.titulo-equipo span { color: #5ab9c1; }
+
+.rejilla-equipo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 30px;
+}
+
+.carta-equipo {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(90, 185, 193, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0; /* JS la revelará */
+    transform: translateY(50px) scale(0.9);
+}
+
+/* Interacción al pasar el ratón */
+.carta-equipo:hover {
+    background: rgba(90, 185, 193, 0.1);
+    border-color: #5ab9c1;
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(90, 185, 193, 0.2);
+}
+/* Contenedor principal del avatar */
+.avatar-marco {
+    width: 110px; /* Un pelín más grande para que respire */
+    height: 110px;
+    margin: 0 auto 20px;
+    position: relative; /* Necesario para posicionar el borde */
+}
+
+/* EL BORDE QUE GIRA (Efecto Radar) */
+.avatar-marco::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed #5ab9c1; /* Tu borde dashed */
+    box-shadow: 0 0 10px rgba(90, 185, 193, 0.3);
+    
+    /* ANIMACIÓN SOLO AQUÍ */
+    animation: rotarBorde 10s linear infinite;
+}
+
+/* LA IMAGEN (QUIETA) */
+.avatar-img {
+    width: 90px; /* Más pequeña que el marco para que se vea el borde */
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    /* Centrado absoluto dentro de .avatar-marco */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ESTO LA MANTIENE QUIETA Y CENTRADA */
+    background: #000; /* Fondo negro */
+    border: 1px solid rgba(90, 185, 193, 0.2); /* Pequeño borde fijo */
+    z-index: 2; /* Por encima del borde que gira */
+}
+
+/* La foto dentro */
+.avatar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%); /* Blanco y negro */
+    transition: filter 0.3s ease;
+}
+
+/* Al pasar el ratón por la carta */
+.carta-equipo:hover .avatar-img img {
+    filter: grayscale(0%); /* Vuelve el color */
+}
+
+/* La animación del borde */
+@keyframes rotarBorde {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.carta-equipo.revelada {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.seccion-faq-global {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    padding: 80px 0;
+}
+
+.contenedor-faq {
+    width: 80%;
+    max-width: 800px;
+}
+
+.titulo-faq {
+    font-family: 'Orbitron';
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+.titulo-faq span { color: #5ab9c1; }
+
+.lista-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(90, 185, 193, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0; /* JS las revelará */
+    transform: translateX(-30px);
+}
+
+.faq-item.revelado {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.faq-pregunta {
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Orbitron';
+    font-size: 1rem;
+    color: #333;
+    transition: background 0.3s;
+}
+
+.faq-pregunta:hover {
+    background: rgba(90, 185, 193, 0.05);
+}
+
+.icono-flecha {
+    color: #5ab9c1;
+    font-style: normal;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.faq-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.faq-respuesta p {
+    padding: 25px;
+    color: #666;
+    line-height: 1.6;
+    border-top: 1px solid rgba(90, 185, 193, 0.1);
+}
+
+/* Cuando está abierto */
+.faq-item.abierto {
+    border-color: #5ab9c1;
+    box-shadow: 0 0 20px rgba(90, 185, 193, 0.1);
+}
+
+.faq-item.abierto .faq-respuesta {
+    max-height: 1000px;
+    transition: max-height 1s ease-in-out;
+}
+
+.faq-item.abierto .icono-flecha {
+    transform: rotate(45deg); 
+}

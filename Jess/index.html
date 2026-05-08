@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Live | Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="index_style.css">
+</head>
+<body>
+
+    <div id="fondo-3d"></div>
+
+    <header id="cabecera-superior">
+        <div class="contenedor-logo">
+            <img src="Imagenes/Logo_SmartLive.png" alt="Logo" class="imagen-logo">
+            <span class="logotipo-texto">SMARTLIVE</span>
+        </div>
+        <nav class="navegacion">
+            <a href="#proyectos" class="enlace-nav">Proyectos</a>
+            <a href="#equipo" class="enlace-nav">Plantilla</a>
+            <a href="#faq" class="enlace-nav">Preguntas</a>
+            <a href="#contacto" class="boton-contacto-neon">Contáctanos</a>
+        </nav>
+    </header>
+
+    <main id="contenedor-principal">
+        
+        <section id="inicio" class="seccion-pantalla">
+            <div class="contenido-central">
+                <h1 class="titulo-tech">SMARTLIVE</h1>
+                <div class="bloque-texto">
+                    <p class="frase-fuerte">Desarrollo y Gestión de proyectos I+D+I</p>
+                    <p class="frase-suave">
+                        Desarrollo integral (end-to-end): diseño, ingeniería, prototipado, <br>
+                        validación y despliegue.
+                    </p>
+                </div>
+                <a href="#ayuda" class="boton-especialidades">VAMOS ↗</a>
+            </div>
+        </section>
+
+        <section id="ayuda" class="contenedor-horizontal-bloqueado">
+            <div class="escena-sticky">
+                <div class="pista-cartas">
+                    <div class="carta-horizontal">
+                        <span class="num">01</span>
+                        <h3>Dinos qué necesitas</h3>
+                        <p>Cuéntanos cuáles son tus necesidades y qué te gustaría automatizar.</p>
+                    </div>
+                    <div class="carta-horizontal">
+                        <span class="num">02</span>
+                        <h3>Planificamos para ti</h3>
+                        <p>Nuestros técnicos analizarán las mejores tecnologías para tu proyecto.</p>
+                    </div>
+                    <div class="carta-horizontal">
+                        <span class="num">03</span>
+                        <h3>¡Disfruta tu entorno!</h3>
+                        <p>Llevamos a cabo tu proyecto hasta la puesta en marcha final.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="seccion-pantalla">
+            <div class="contenido-contacto">
+                <div class="animar-entrada">
+                    <h2 class="titulo-tech">¿Tienes un proyecto? <br><span>¡Pregúntanos!</span></h2>
+                    
+                    <div class="bloque-texto-contacto">
+                        <p class="frase-fuerte">Desarrollamos y gestionamos íntegramente tu proyecto.</p>
+                        <p class="frase-suave">
+                            Te ayudamos en el diseño, la puesta en marcha y la comercialización del producto.<br>
+                            Tú únicamente cuéntanos tu idea y nosotros te ayudamos en todo lo demás.
+                        </p>
+                    </div>
+
+                    <a href="#formulario" class="boton-contacto-final">EMPEZAR PROYECTO ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="especialidades-circulo" class="contenedor-rotador">
+            <div class="escena-sticky-circulo">
+                <div class="nucleo-ia-brillo"></div>
+                
+                <div class="anillo-especialidades">
+                    <div class="punto-especialidad" style="--i:0;"><span>Entornos IA</span></div>
+                    <div class="punto-especialidad" style="--i:1;"><span>Museística</span></div>
+                    <div class="punto-especialidad" style="--i:2;"><span>Software IA</span></div>
+                    <div class="punto-especialidad" style="--i:3;"><span>Impresión 3D</span></div>
+                    <div class="punto-especialidad" style="--i:4;"><span>Animación 3D</span></div>
+                    <div class="punto-especialidad" style="--i:5;"><span>Robótica</span></div>
+                </div>
+
+                <div class="info-especialidad">
+                    <div class="detalle activo" id="esp-0">
+                        <h3>Control de Entornos IA</h3>
+                        <p>Gestión inteligente de espacios mediante algoritmos avanzados para una eficiencia total.</p>
+                    </div>
+                    <div class="detalle" id="esp-1">
+                        <h3>Museística</h3>
+                        <p>Digitalización y creación de experiencias inmersivas para entornos culturales y exposiciones.</p>
+                    </div>
+                    <div class="detalle" id="esp-2">
+                        <h3>Software con IA</h3>
+                        <p>Desarrollo de herramientas personalizadas optimizadas con inteligencia artificial.</p>
+                    </div>
+                    <div class="detalle" id="esp-3">
+                        <h3>Modelo e Impresión 3D</h3>
+                        <p>Fabricación aditiva y prototipado físico con materiales de alta precisión.</p>
+                    </div>
+                    <div class="detalle" id="esp-4">
+                        <h3>Animaciones 3D</h3>
+                        <p>Visualización avanzada y contenido digital dinámico de alto impacto visual.</p>
+                    </div>
+                    <div class="detalle" id="esp-5">
+                        <h3>Robótica</h3>
+                        <p>Automatización física y sistemas autónomos diseñados para tareas complejas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="contenedor-proyectos-vertical">
+        <div class="proyectos-sticky">
+            <h2 class="titulo-seccion-bg">PORTFOLIO</h2>
+            
+            <div class="contenedor-cards-proyectos">
+                <div class="proyecto-item left" id="p1">
+                    <div class="proy-info">
+                        <span class="proy-num">01</span>
+                        <h3>SmartCAD</h3>
+                        <p>Diseño paramétrico avanzado y modelado 3D optimizado para ingeniería de alta precisión.</p>
+                    </div>
+                    <div class="proy-img"><span>CAD ENGINE</span></div>
+                </div>
+
+                <div class="proyecto-item right" id="p2">
+                    <div class="proy-info">
+                        <span class="proy-num">02</span>
+                        <h3>HigIA</h3>
+                        <p>Inteligencia artificial aplicada a la sanidad ambiental y control de higiene inteligente.</p>
+                    </div>
+                    <div class="proy-img"><span>HEALTH TECH</span></div>
+                </div>
+
+                <div class="proyecto-item left" id="p3">
+                    <div class="proy-info">
+                        <span class="proy-num">03</span>
+                        <h3>Sabiar</h3>
+                        <p>Gestión del conocimiento y algoritmos predictivos para la optimización de recursos.</p>
+                    </div>
+                    <div class="proy-img"><span>AI CORE</span></div>
+                </div>
+
+                <div class="proyecto-item right" id="p4">
+                    <div class="proy-info">
+                        <span class="proy-num">04</span>
+                        <h3>SmartFire</h3>
+                        <p>Detección temprana de incendios mediante visión térmica y computación en el extremo.</p>
+                    </div>
+                    <div class="proy-img"><span>FIRE SENSOR</span></div>
+                </div>
+
+                <div class="proyecto-item left" id="p5">
+                    <div class="proy-info">
+                        <span class="proy-num">05</span>
+                        <h3>Dianas</h3>
+                        <p>Sistemas electrónicos de alta precisión para entrenamiento táctico avanzado.</p>
+                    </div>
+                    <div class="proy-img"><span>TACTICAL</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipo" class="seccion-equipo-global">
+        <div class="contenedor-equipo">
+            <h2 class="titulo-equipo">EQUIPO <span>SMARTLIVE</span></h2>
+            <div class="rejilla-equipo">
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Alex Rivera">
+                        </div>
+                    </div>
+                    <h3>Alex Rivera</h3>
+                    <span class="puesto">Lead AI Engineer</span>
+                    <p>Especialista en redes neuronales y visión artificial avanzada.</p>
+                </div>
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Elena Soler">
+                        </div>
+                    </div>
+                    <h3>Elena Soler</h3>
+                    <span class="puesto">Industrial Designer</span>
+                    <p>Experta en prototipado 3D y optimización de materiales.</p>
+                </div>
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Marc Volt">
+                        </div>
+                    </div>
+                    <h3>Marc Volt</h3>
+                    <span class="puesto">Robotics Specialist</span>
+                    <p>Desarrollo de sistemas autónomos y cinemática inversa.</p>
+                </div>
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Sara Tech">
+                        </div>
+                    </div>
+                    <h3>Sara Tech</h3>
+                    <span class="puesto">Software Architect</span>
+                    <p>Arquitectura de sistemas escalables y despliegue cloud.</p>
+                </div>
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Hugo IoT">
+                        </div>
+                    </div>
+                    <h3>Hugo IoT</h3>
+                    <span class="puesto">Embedded Systems</span>
+                    <p>Integración de sensores de baja latencia y telemetría.</p>
+                </div>
+                <div class="carta-equipo">
+                    <div class="avatar-marco">
+                        <div class="avatar-img">
+                            <img src="Imagenes/Usuario.jpg" alt="Lara Mind">
+                        </div>
+                    </div>
+                    <h3>Lara Mind</h3>
+                    <span class="puesto">UX/UI Designer</span>
+                    <p>Interfaz hombre-máquina y experiencias inmersivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="seccion-faq-global">
+        <div class="contenedor-faq">
+            <h2 class="titulo-faq">FAQ <span>NOSOTROS RESPONDEMOS</span></h2>
+            
+            <div class="lista-faq">
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <span>01. ¿Cómo garantiza SmartLive la precisión en SmartCAD?</span>
+                        <i class="icono-flecha">+</i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Utilizamos algoritmos de cálculo paramétrico en tiempo real que validan cada cota frente a normativas internacionales de ingeniería de forma automática.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <span>02. ¿Es posible integrar HigIA en infraestructuras ya existentes?</span>
+                        <i class="icono-flecha">+</i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Sí, nuestro sistema está diseñado para ser agnóstico al hardware, permitiendo la conexión mediante protocolos IoT estándar a sensores y cámaras ya instalados.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <span>03. ¿Qué nivel de latencia ofrece el sistema SmartFire?</span>
+                        <i class="icono-flecha">+</i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Gracias al procesamiento en el Edge (extremo), la detección y alerta se producen en menos de 150 milisegundos desde la ignición térmica.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <span>04. ¿Cómo se gestiona la privacidad de los datos en Sabiar?</span>
+                        <i class="icono-flecha">+</i>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Todos los datos se encriptan bajo estándares AES-256 y el procesamiento de IA se realiza en servidores locales o nubes privadas según el cumplimiento de la RGPD.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+    <nav class="scroll-dots">
+    <div class="linea-progreso"></div>
+    <a href="#inicio" class="dot activo" data-sec="inicio"><span>Inicio</span></a>
+    <a href="#ayuda" class="dot" data-sec="ayuda"><span>Proceso</span></a>
+    <a href="#contacto" class="dot" data-sec="contacto"><span>Contacto</span></a>
+    <a href="#especialidades-circulo" class="dot" data-sec="especialidades-circulo"><span>Especialidades</span></a>
+    <a href="#proyectos" class="dot" data-sec="proyectos"><span>Proyectos</span></a>
+    <a href="#equipo" class="dot" data-sec="equipo"><span>Proyectos</span></a>
+    <a href="#faq" class="dot" data-sec="faq"><span>FAQ</span></a>
+    </nav>
+    <script src="script.js"></script>
+</body>ap
+</html>

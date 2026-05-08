@@ -1,0 +1,28 @@
+/* CSS */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+  padding: 100px;
+}
+
+.node-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px); /* Efecto cristal */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%; /* Para los nodos circulares */
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.node-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5); /* Resplandor morado */
+}

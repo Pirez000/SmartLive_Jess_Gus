@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogBook FFE - Historial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="history-page">
+    <header>
+        <div class="header-content">
+            <h1>LogBook <span>FFE</span></h1>
+            <p>Seguimiento de Horas Acumuladas</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-link">Nueva Entrada</a>
+        <a href="lista.html" class="nav-link active">Historial y Progreso</a>
+    </nav>
+
+    <main class="container">
+        <div class="card status-card">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span id="total-hours-display" class="stat-value">0</span>
+                    <span class="stat-label">Horas Totales</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">180</span>
+                    <span class="stat-label">Meta Final</span>
+                </div>
+            </div>
+            <div class="progress-box">
+                <div class="progress-bar-container">
+                    <div id="progress-bar-fill"></div>
+                    <div id="progress-percentage">0%</div>
+                </div>
+            </div>
+            <div id="goal-msg" class="goal-message" style="display: none;">
+                ¡Enhorabuena! Has completado las 180 horas de formación 🎉
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Listado de Actividades</h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th class="text-center">Horas</th>
+                            <th class="text-right">Gestión</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Generado por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>  
+</body>
+</html>
