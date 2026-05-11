@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Averta';
+    src: url('AvertaStd-Regular.ttf') format('opentype');
+}
+
 /* 1. RESET Y BASE */
 * {
     margin: 0;
@@ -10,7 +15,7 @@ body, html {
     width: 100%;
     overflow: hidden;
     background-color: #ffffff;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Averta', sans-serif;
 }
 
 /* 2. FONDO 3D */
@@ -104,7 +109,7 @@ body, html {
 }
 
 .carta-horizontal .num {
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 5rem;
     color: #5ab9c1;
     opacity: 0.15;
@@ -113,7 +118,7 @@ body, html {
     right: 30px;
 }
 
-.carta-horizontal h3 { font-family: 'Orbitron'; font-size: 1.6rem; margin-bottom: 20px; color: #000; }
+.carta-horizontal h3 { font-family: 'Averta', sans-serif; font-size: 1.6rem; margin-bottom: 20px; color: #000; }
 .carta-horizontal p { font-size: 1.1rem; line-height: 1.6; color: #333; }
 
 /* 6. HEADER Y BOTONES */
@@ -134,7 +139,7 @@ body, html {
 
 .contenedor-logo { display: flex; align-items: center; gap: 15px; }
 .imagen-logo { height: 60px; width: auto; }
-.logotipo-texto { font-family: 'Orbitron'; font-weight: 900; letter-spacing: 2px; color: #000; }
+.logotipo-texto { font-family: 'Averta', sans-serif; font-weight: 900; letter-spacing: 2px; color: #000; }
 
 .navegacion { display: flex; gap: 10px; }
 .enlace-nav {
@@ -155,7 +160,7 @@ body, html {
 .contenido-central { text-align: center; max-width: 900px; z-index: 2; }
 
 .titulo-tech {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Averta', sans-serif;
     font-size: clamp(3.5rem, 9vw, 6.5rem);
     font-weight: 900;
     margin-bottom: 25px;
@@ -181,7 +186,7 @@ body, html {
     border-radius: 50px;
     text-decoration: none;
     color: #000;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Averta', sans-serif; 
     font-weight: 700;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -223,7 +228,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-300px);
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 0.9rem;
     color: #5ab9c1;
     text-transform: uppercase;
@@ -249,7 +254,7 @@ body, html {
 }
 
 .detalle.activo { opacity: 1; transform: translateY(-50%) translateX(0); }
-.detalle h3 { font-family: 'Orbitron'; font-size: 2.2rem; color: #5ab9c1; margin-bottom: 20px; }
+.detalle h3 { font-family: 'Averta', sans-serif; font-size: 2.2rem; color: #5ab9c1; margin-bottom: 20px; }
 .detalle p { font-size: 1.2rem; line-height: 1.6; color: #333; }
 
 /* --- CONTACTO --- */
@@ -318,7 +323,7 @@ body, html {
     background: transparent;
     border: 2px solid #5ab9c1;
     color: #5ab9c1;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Averta', sans-serif;
     font-weight: 700;
     text-decoration: none;
     border-radius: 50px;
@@ -390,7 +395,7 @@ body, html {
 }
 
 .detalle h3 {
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 3.5rem; /* ¡Mucho más grande! */
     color: #000;
     margin-bottom: 20px;
@@ -428,7 +433,7 @@ body, html {
 
 .titulo-seccion-bg {
     position: absolute;
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 15vw;
     color: rgba(90, 185, 193, 0.03);
     z-index: -1;
@@ -467,24 +472,18 @@ body, html {
 }
 
 .proy-info { width: 40%; }
-.proy-num { font-family: 'Orbitron'; color: #5ab9c1; font-size: 1.5rem; display: block; margin-bottom: 10px; }
-.proy-info h3 { font-family: 'Orbitron'; font-size: 4rem; color: #000; margin-bottom: 20px; }
+.proy-num { font-family: 'Averta', sans-serif; color: #5ab9c1; font-size: 1.5rem; display: block; margin-bottom: 10px; }
+.proy-info h3 { font-family: 'Averta', sans-serif; font-size: 4rem; color: #000; margin-bottom: 20px; }
 .proy-info p { font-size: 1.3rem; color: #444; line-height: 1.6; }
 
 .proy-img {
+    position: relative;
     width: 500px;
     height: 350px;
-    background: #000;
-    color: #5ab9c1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Orbitron';
-    font-size: 1rem;
+    background: #000; /* Fondo de seguridad */
     border-radius: 20px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Importante para que la imagen no se salga de las esquinas redondeadas */
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
 }
 
 .proy-img::after {
@@ -492,6 +491,34 @@ body, html {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(45deg, transparent, rgba(90, 185, 193, 0.2));
+}
+
+.img-portfolio {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen llene el espacio sin deformarse */
+    display: block;
+    transition: transform 0.5s ease; /* Para un efecto de zoom al hacer hover */
+    opacity: 0.8; /* Un poco de transparencia para el look tech */
+}
+
+.proyecto-item:hover .img-portfolio {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.proy-tag {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Averta', sans-serif;
+    font-size: 0.7rem;
+    color: #5ab9c1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 12px;
+    border-radius: 4px;
+    z-index: 2;
+    border: 1px solid rgba(90, 185, 193, 0.3);
 }
 
 /* NAVEGACIÓN LATERAL POR PUNTOS */
@@ -537,7 +564,7 @@ body, html {
     padding: 5px 12px;
     border-radius: 4px;
     font-size: 0.7rem;
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
@@ -587,7 +614,7 @@ body, html {
 }
 
 .titulo-equipo {
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 3rem;
     text-align: center;
     margin-bottom: 50px;
@@ -703,7 +730,7 @@ body, html {
 }
 
 .titulo-faq {
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     text-align: center;
     margin-bottom: 50px;
     font-size: 2.5rem;
@@ -738,7 +765,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Orbitron';
+    font-family: 'Averta', sans-serif;
     font-size: 1rem;
     color: #333;
     transition: background 0.3s;
@@ -782,4 +809,153 @@ body, html {
 
 .faq-item.abierto .icono-flecha {
     transform: rotate(45deg); 
+}
+
+.footer-smartlive {
+    width: 100%;
+    background: var(--blanco-puro);
+    border-top: 1px solid var(--borde-suave);
+    padding: 30px 0;
+    margin-top: auto; /* Empuja el footer al fondo si hay poco contenido */
+}
+
+.contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo del Logo */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo img {
+    height: 50px; /* Ajusta según el tamaño de tu imagen */
+    width: auto;
+    filter: drop-shadow(0 2px 5px rgba(90, 185, 193, 0.2));
+}
+
+.brand-name {
+    font-family: 'Averta', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--texto-oscuro);
+}
+
+/* Estilo de los Textos */
+.footer-info {
+    text-align: right;
+}
+
+.ingenieria-text {
+    font-family: 'Averta', sans-serif;
+    font-size: 1.1rem;
+    color: var(--texto-oscuro);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.copyright {
+    font-family: 'Averta', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    margin: 5px 0 0 0;
+    font-weight: 500;
+}
+
+.footer-smartlive {
+    /* Forzamos que sea una "página" completa */
+    height: 100vh !important; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Crucial para el scroll snap */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    
+    background: #ffffff; /* Asegúrate de que no sea transparente */
+    position: relative;
+    z-index: 20;
+    margin-top: 0; 
+}
+
+/* Aseguramos la distribución en 3 columnas */
+.contenedor-footer {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Separa los 3 bloques */
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* Estilo del Botón Central */
+.btn-footer-contacto {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: 'Averta', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #5ab9c1;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid rgba(90, 185, 193, 0.4);
+    border-radius: 50px;
+    background: rgba(90, 185, 193, 0.05);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-footer-contacto span {
+    margin-left: 8px;
+    font-size: 1rem;
+}
+
+/* Efectos al pasar el ratón (Hover) */
+.btn-footer-contacto:hover {
+    background: #5ab9c1;
+    color: #fff;
+    border-color: #5ab9c1;
+    box-shadow: 0 10px 25px rgba(90, 185, 193, 0.3);
+    transform: translateY(-3px);
+}
+
+.btn-footer-contacto:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive: En móviles se ponen en columna */
+@media (max-width: 850px) {
+    .contenedor-footer {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .footer-info {
+        text-align: center;
+    }
+    .footer-logo {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor-footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .footer-info {
+        text-align: center;
+    }
 }

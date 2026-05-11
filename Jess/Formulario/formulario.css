@@ -1,0 +1,172 @@
+:root {
+    --cian-fuerte: #5ab9c1;
+    --cian-claro: #b7e1e3;
+    --blanco-fondo: #f8fafb;
+    --blanco-puro: #ffffff;
+    --texto-oscuro: #2c3e50;
+    --borde-suave: rgba(90, 185, 193, 0.2);
+}
+
+body {
+    margin: 0;
+    background-color: var(--blanco-fondo);
+    background-image: radial-gradient(circle at 2px 2px, var(--cian-claro) 1px, transparent 0);
+    background-size: 40px 40px; /* Fondo de puntos sutil */
+    color: var(--texto-oscuro);
+    font-family: 'Rajdhani', sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOTÓN VOLVER */
+.btn-volver {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    text-decoration: none;
+    color: var(--cian-fuerte);
+    font-family: 'Orbitron';
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--blanco-puro);
+    border: 1px solid var(--borde-suave);
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.btn-volver:hover {
+    background: var(--cian-fuerte);
+    color: white;
+    transform: translateX(-5px);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.vidrio-contacto {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--borde-suave);
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(90, 185, 193, 0.15);
+    max-width: 1300px;
+}
+
+.columna {
+    padding: 50px;
+    background: var(--blanco-puro);
+}
+
+/* COLUMNA INFO */
+.columna.info {
+    background: linear-gradient(135deg, var(--blanco-puro) 0%, var(--cian-claro) 200%);
+    border-right: 1px solid var(--borde-suave);
+}
+
+h2, h3 { font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.8rem; }
+h2 span, h3 span { color: var(--cian-fuerte); }
+
+.red-link {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.red-link span { color: var(--cian-fuerte); font-family: 'Orbitron'; font-size: 0.7rem; }
+.red-link:hover { color: var(--cian-fuerte); transform: scale(1.05); }
+
+/* COLUMNA FORMULARIO */
+.formulario {
+    background: var(--blanco-puro);
+}
+
+.grupo-input { margin-bottom: 20px; }
+label { display: block; font-family: 'Orbitron'; font-size: 0.7rem; color: var(--cian-fuerte); margin-bottom: 8px; font-weight: bold; }
+
+input, textarea {
+    width: 100%;
+    background: #f1f5f6;
+    border: 1px solid transparent;
+    padding: 14px;
+    color: var(--texto-oscuro);
+    font-family: 'Rajdhani';
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    background: var(--blanco-puro);
+    border-color: var(--cian-fuerte);
+    box-shadow: 0 0 10px rgba(90, 185, 193, 0.1);
+}
+
+.boton-envio {
+    background: var(--cian-fuerte);
+    color: white;
+    border: none;
+    padding: 18px;
+    width: 100%;
+    font-family: 'Orbitron';
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.boton-envio:hover {
+    background: var(--texto-oscuro);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* COLUMNA MAPA */
+/* Ajuste de la columna derecha */
+.mapa {
+    padding: 0 !important; /* Quitamos cualquier padding que empuje el mapa */
+    position: relative;
+    height: 100%; /* Obligamos a la columna a llenar el espacio */
+    min-height: 400px; /* Importante para que no colapse */
+    background: #e5e3df;
+    display: flex; /* Ayuda a centrar contenido */
+}
+
+.mapa iframe {
+    position: absolute; /* Lo sacamos del flujo para que llene el padre */
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+    display: block;
+    filter: grayscale(0.2) contrast(1.1) brightness(0.9);
+}
+
+/* El cuadro de texto "Headquarters" */
+.overlay-mapa {
+    position: absolute;
+    bottom: 30px; /* Subimos un poco para que respire */
+    left: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 10; /* Aseguramos que esté por encima del mapa */
+    border-left: 5px solid #5ab9c1;
+    pointer-events: none; /* Para que puedas arrastrar el mapa "debajo" del cuadro */
+}
+@media (max-width: 1100px) {
+    .vidrio-contacto { grid-template-columns: 1fr; margin: 20px; }
+    body { height: auto; padding: 100px 0; }
+}
