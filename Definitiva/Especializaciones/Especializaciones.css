@@ -1,0 +1,224 @@
+/* CSS General - SmartLive Especializaciones */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --color-principal: #5ab9c1;
+    --color-suave: #b7e1e3;
+    --color-texto-titulo: #000000;
+    --color-blanco: #ffffff;
+    --color-gris-fondo: #f9f9f9;
+}
+
+body {
+    background-color: var(--color-blanco);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- NAVEGACIÓN --- */
+header {
+    background-color: var(--color-blanco);
+    padding: 1rem 5%;
+    border-bottom: 2px solid var(--color-suave);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.header-logo {
+    height: 55px; 
+    width: auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-texto-titulo);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--color-texto-titulo);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--color-principal);
+}
+
+/* --- HERO SECTION --- */
+.hero-ia {
+    background: linear-gradient(135deg, var(--color-principal), var(--color-suave));
+    color: var(--color-blanco);
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.hero-ia h1 {
+    font-size: 2.5rem;
+    color: var(--color-texto-titulo);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* --- BLOQUES DE CONTENIDO (ESTRUCTURA SMART) --- */
+.service-page {
+    padding: 40px 0;
+}
+
+.ia-block {
+    display: flex;
+    align-items: center;
+    padding: 60px 5%;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Clase para invertir el orden (Imagen-Texto / Texto-Imagen) */
+.ia-block.reverse {
+    flex-direction: row-reverse;
+    background-color: var(--color-gris-fondo);
+}
+
+.ia-block .content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.ia-block .visual {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.ia-block h2 {
+    color: var(--color-texto-titulo);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--color-principal);
+    padding-left: 15px;
+}
+
+.ia-block p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+/* Listas de Aplicaciones */
+.apps {
+    list-style: none;
+}
+
+.apps li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.apps li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--color-principal);
+    font-weight: bold;
+}
+
+/* Estilo para los Placeholders de Imagen o Contenedores de Imagen */
+.placeholder-img {
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-suave);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-texto-titulo);
+    font-weight: bold;
+    border: 2px dashed var(--color-principal);
+}
+
+/* --- SECCIÓN LLAMADA A LA ACCIÓN (CTA) --- */
+.cta-ia {
+    background-color: var(--color-suave);
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.cta-ia h2 {
+    color: var(--color-texto-titulo);
+    margin-bottom: 15px;
+}
+
+.btn-main {
+    display: inline-block;
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn-main:hover {
+    transform: scale(1.05);
+    background-color: var(--color-texto-titulo);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--color-blanco);
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--color-suave);
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .ia-block, .ia-block.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ia-block h2 {
+        border-left: none;
+        border-bottom: 3px solid var(--color-principal);
+        display: inline-block;
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+
+    .apps li {
+        text-align: left;
+    }
+}
