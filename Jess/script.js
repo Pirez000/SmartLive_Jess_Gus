@@ -95,15 +95,30 @@ window.onload = () => {
 
             if (st >= oTop && st <= oTop + (oHeight - wh)) {
                 const progresoRot = (st - oTop) / (oHeight - wh);
+                
+                // Rotación suave del anillo
                 anillo.style.transform = `rotate(-${progresoRot * 360}deg)`;
 
+                // Efecto Turbo en Three.js (Aumenta según el progreso)
                 if(particulas) {
-                    particulas.rotation.y += 0.015; // Velocidad Turbo
-                    particulas.material.color.setHex(0x5ab9c1); 
+                    particulas.rotation.y += 0.02; 
+                    particulas.material.color.setHex(0x00f2ff); // Color cyan eléctrico
                 }
 
+                // Sincronización de textos y puntos
+                const puntos = document.querySelectorAll('.punto-especialidad');
+                const total = detalles.length;
                 const indice = Math.min(Math.floor(progresoRot * detalles.length), detalles.length - 1);
-                detalles.forEach((det, i) => det.classList.toggle('activo', i === indice));
+
+                detalles.forEach((det, i) => {
+                    if (i === indice) {
+                        det.classList.add('activo');
+                        if(puntos[i]) puntos[i].classList.add('activo');
+                    } else {
+                        det.classList.remove('activo');
+                        if(puntos[i]) puntos[i].classList.remove('activo');
+                    }
+                });
             }
         }
 
@@ -198,3 +213,4 @@ window.addEventListener('resize', () => {
     camara.updateProjectionMatrix();
     if(render) render.setSize(window.innerWidth, window.innerHeight);
 });
+
