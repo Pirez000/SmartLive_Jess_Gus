@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>SmartLive</title>
+
+<style>
+
+@font-face {
+    font-family: 'Averta Std';
+    src: url('fonts/averta-std/AvertaStd-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta Std bold';
+    src: url('fonts/averta-std/AvertaStd-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.negrita{
+    font-family: 'Averta Std bold';
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Averta Std', Arial, sans-serif;
+}
+
+body{
+    background:#fff;
+    min-height:300vh;
+}
+
+/* =========================
+   HEADER FIJO
+========================= */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* CONTENIDO HEADER */
+.header-content{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo{
+    width:140px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logo img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+/* LINK DEL LOGO */
+.logo a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+}
+
+/* IMAGEN */
+.logo img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+.header-title{
+    flex:1;
+    text-align:center;
+    font-size:34px;
+    font-weight:bold;
+    color:#222;
+}
+
+/* =========================
+   MENÚ
+========================= */
+.menu{
+    display:flex;
+    gap:12px;
+}
+
+/* BOTONES NORMALES */
+.boton-menu{
+    padding:10px 18px;
+    border:none;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    transition:0.2s ease;
+    font-size:20px;
+}
+
+/* BOTONES NORMALES */
+.boton-menu{
+    position:relative;
+    padding:10px 18px;
+    border:none;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    font-size:20px;
+    transition:0.2s ease;
+}
+
+/* LÍNEA SUBRAYADA */
+.boton-menu::after{
+    content:"";
+    position:absolute;
+    left:18px;
+    bottom:6px;
+    width:calc(100% - 36px);
+    height:2px;
+    background:#5ab9c1;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.4s ease;
+}
+
+/* HOVER */
+.boton-menu:hover::after{
+    transform:scaleX(1);
+}
+
+/* =========================
+   BOTÓN CONTACTO
+========================= */
+.boton-menu-contacto{
+    position:relative;
+    padding:10px 18px;
+    background:#fff;
+    color:#000;
+    font-size:20px;
+    cursor:pointer;
+    border:2px solid #000;
+    border-radius:12px;
+    transition:border-color 0.8s ease;
+}
+
+/* CAPA DEL BORDE AZUL */
+.boton-menu-contacto::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border:2px solid #5ab9c1;
+    border-radius:12px;
+    clip-path: inset(0 100% 0 0);
+    transition:clip-path 0.8s linear;
+    pointer-events:none;
+}
+
+/* HOVER */
+.boton-menu-contacto:hover{
+    border-color:transparent;
+}
+
+.boton-menu-contacto:hover::before{
+    clip-path: inset(0 0 0 0);
+}
+
+/* =========================
+   ANIMACIÓN PROGRESIVA
+========================= */
+@keyframes borderDraw{
+
+    0%{
+        clip-path: inset(0 100% 100% 0);
+    }
+
+    25%{
+        clip-path: inset(0 0 100% 0);
+    }
+
+    50%{
+        clip-path: inset(0 0 0 0);
+    }
+
+    100%{
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.progress-container{
+    width:100%;
+    height:5px;
+    background:#e5e5e5;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #5ab9c1,
+        #b7e1e3
+    );
+
+    transition:width 0.1s linear;
+}
+
+/* =========================
+   SCROLL SUAVE
+========================= */
+html{
+    scroll-behavior:smooth;
+}
+
+/* EVITA QUE EL HEADER TAPE LAS SECCIONES */
+section{
+    scroll-margin-top:70px;
+}
+
+/* QUITAR SUBRAYADO LINKS */
+.menu a,
+.logo a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   MAIN
+========================= */
+/* =========================
+   PRINCIPAL / HERO
+========================= */
+.contenido{
+    padding-top:60px;
+    width:100%;
+    margin:0;
+}
+
+/* BLOQUE PRINCIPAL */
+.bloque-hero{
+    width:100%;
+    min-height:400px;
+    display:flex;
+    align-items:center;
+    background:#b7e1e3;
+}
+
+/* IMAGEN IZQUIERDA */
+.bloque-img{
+    flex:1;
+    height:auto;
+    display:flex;
+}
+
+.bloque-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.bloque-hero{
+    width:100%;
+    min-height:500px;
+    display:flex;
+    align-items:stretch;
+    background:#b7e1e3;
+}
+
+/* IMAGEN */
+.bloque-img{
+    flex:1;
+}
+
+.bloque-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* DERECHA EN COLUMNA */
+.bloque-texto{
+    flex:1;
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
+    gap:30px;
+}
+
+/* H1 GRANDE DERECHA */
+.titulo-principal{
+    font-size:70px;
+    text-align:right;
+    margin-bottom:20px;
+}
+
+/* SECCIONES */
+.bloque-seccion h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.bloque-seccion p{
+    font-size:20px;
+    line-height:1.5;
+}
+
+/* BOTÓN */
+.btn-contacto{
+    display:inline-block;
+    padding:12px 20px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    transition:transform 0.25s ease, background 0.25s ease;
+    text-decoration:none;
+}
+
+/* HOVER SUAVE AGRANDADO */
+.btn-contacto:hover{
+    transform:scale(1.08);
+}
+
+.btn-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.bloque-img{
+    flex:1;
+
+    opacity:0;
+
+    /* imagen recortada */
+    clip-path: inset(0 100% 0 0);
+
+    animation:
+        revealImage 1.4s cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+.bloque-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    /* pequeño zoom premium */
+    transform:scale(1.15);
+
+    animation:
+        imageZoomOut 1.6s ease forwards;
+}
+
+@keyframes revealImage{
+
+    0%{
+        opacity:0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100%{
+        opacity:1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes imageZoomOut{
+
+    0%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.titulo-principal,
+.bloque-seccion,
+.btn-wrapper{
+
+    opacity:0;
+    transform:translateY(30px);
+
+    animation:
+        fadeUp 0.9s ease forwards;
+}
+
+.titulo-principal{
+    animation-delay:0.5s;
+}
+
+.bloque-seccion:nth-child(2){
+    animation-delay:0.8s;
+}
+
+.bloque-seccion:nth-child(3){
+    animation-delay:1.1s;
+}
+
+.btn-wrapper{
+    animation-delay:1.3s;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   ESPECIALIZACIONES
+========================= */
+
+.especializaciones{
+    padding:70px 70px;
+    background:#fff;
+}
+
+.titulo-especializaciones{
+    font-size:50px;
+    margin-bottom:50px;
+}
+
+.slider-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+}
+
+.slider-viewport{
+    width:1600px;
+    overflow:hidden;
+}
+
+.slider-track{
+    display:flex;
+    will-change:transform;
+}
+
+/* TARJETA */
+.especialidad{
+    min-width:400px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    flex-shrink:0;
+}
+
+.especialidad h3{
+    font-size:20px;
+    text-align:center;
+}
+
+.especialidad img{
+    width:320px;
+    height:320px;
+    object-fit:cover;
+    border-radius:0;
+}
+
+/* BOTONES */
+.slider-btn{
+    width:60px;
+    height:60px;
+    border:none;
+    background:#000;
+    color:#fff;
+    font-size:34px;
+    cursor:pointer;
+    border-radius:50%;
+    transition:0.3s ease;
+}
+
+.slider-btn:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   PROYECTOS
+========================= */
+.proyectos{
+    background:#b7e1e3;
+    padding:70px 70px;
+    text-align:left;
+    overflow:visible;
+}
+
+.titulo-proyectos{
+    font-size:50px;
+    color:#000;
+    margin-bottom:40px;
+    text-align:left;
+    max-width:1200px;
+    margin-left:0;
+}
+
+/* GRID */
+.grid-proyectos{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:20px;
+    margin-bottom:0px;
+    padding:0;
+}
+
+/* OCULTO */
+.extra{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(0px);
+    transition:
+        max-height 0.8s ease,
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.extra.activo{
+    max-height:1200px;
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* CARD FLIP */
+.flip-card{
+    perspective:1000px;
+    margin:10px 0;
+    position:relative;
+    z-index:1
+}
+
+.flip-inner{
+    position:relative;
+    width:100%;
+    height:220px;
+    transform-style:preserve-3d;
+    transition:0.6s;
+    z-index:1;
+}
+
+.flip-card:hover .flip-inner{
+    transform:rotateY(180deg);
+}
+
+/* FRONT */
+.flip-front, .flip-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:0px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:white;
+}
+
+.flip-front{
+    padding:10px;
+    justify-content:flex-start;
+}
+
+.flip-front img{
+    width:100%;
+    height:170px; /* un pelín más pequeña */
+    object-fit:cover;
+    display:block;
+    border-radius: 0;
+}
+
+.flip-front h3{
+    height:15%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    font-size:18px;
+}
+
+/* BACK */
+.flip-back{
+    transform:rotateY(180deg);
+    padding:15px;
+}
+
+/* BOTÓN */
+.btn-toggle{
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    color:#fff;
+    background-color: #000;
+    transition:0.3s ease;
+}
+
+
+.btn-toggle:hover{
+    transform:scale(1.05);
+}
+
+.btn-proyectos-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+/* =========================
+   EQUIPO
+========================= */
+
+.equipo{
+    padding:70px 70px;
+}
+
+.titulo{
+    font-size:50px;
+    margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    column-gap:30px;
+    row-gap:80px; 
+}
+
+/* CARD */
+.card{
+    position:relative;
+    border-radius:20px;
+    padding:30px;
+    height:320px;
+    width: 500px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    transition:0.4s ease;
+}
+
+/* FOTO */
+.card img{
+    width:270px;
+    height:270px;
+    border-radius:50%;
+    object-fit:cover;
+    transition:0.4s ease;
+}
+
+/* NOMBRE DEBAJO */
+.nombre-bajo{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s ease;
+}
+
+/* BLOQUE DERECHO */
+.info{
+    position:absolute;
+    left:45%;
+    top:50%;
+    transform:translateY(-50%) translateX(40px);
+    text-align:left;
+    opacity:0;
+    transition:0.4s ease;
+}
+
+.info h3{
+    margin:0;
+    font-size:20px;
+}
+
+.info p{
+    margin-top:8px;
+    font-size:14px;
+    color:#555;
+}
+
+
+/* FOTO SE VA A LA IZQUIERDA */
+.card:hover img{
+    transform:translateX(-140px);
+    width:220px;
+    height:220px;
+}
+
+/* NOMBRE DE ABAJO DESAPARECE */
+.card:hover .nombre-bajo{
+    opacity:0;
+    transform:translateY(10px);
+}
+
+/* INFO APARECE A LA DERECHA */
+.card:hover .info{
+    opacity:1;
+    transform:translateY(-20%) translateX(0);
+}
+
+
+.bloque-equipo-intro{
+    padding:50px 40px;
+    text-align:center;
+    max-width:1000px;
+    margin:0 auto;
+}
+
+.bloque-equipo-intro h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.bloque-equipo-intro p{
+    font-size:20px;
+    line-height:1.6;
+    color:#333;
+}
+
+
+/* =========================
+   PROCESO / TARJETAS
+========================= */
+
+.proceso{
+    background:#b7e1e3;
+    padding:70px 70px;
+}
+
+.titulo-proceso{
+    font-size:50px;
+    margin-bottom:50px;
+    color:#000;
+}
+
+/* GRID */
+.proceso-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:25px;
+}
+
+/* CARD */
+.proceso-card{
+    position:relative;
+    background:#fff;
+    padding:35px 30px;
+    min-height:320px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    overflow:hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* CÍRCULO ESQUINA */
+.proceso-card::after{
+    content:"";
+    position:absolute;
+    top:-70px;
+    right:-70px;
+    width:180px;
+    height:180px;
+    background:rgba(90,185,193,0.15);
+    border-radius:50%;
+}
+
+/* NÚMERO */
+.proceso-numero{
+    font-size:60px;
+    font-weight:bold;
+    color:#5ab9c1;
+    line-height:1;
+    position:relative;
+    z-index:2;
+}
+
+/* TITULO */
+.proceso-card h3{
+    font-size:26px;
+    color:#111;
+    line-height:1.2;
+    position:relative;
+    z-index:2;
+}
+
+/* TEXTO */
+.proceso-card p{
+    font-size:18px;
+    line-height:1.6;
+    color:#444;
+    position:relative;
+    z-index:2;
+}
+
+/* RESPONSIVE */
+@media (max-width:1200px){
+
+    .proceso-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media (max-width:768px){
+
+    .proceso-grid{
+        grid-template-columns:1fr;
+    }
+
+    .titulo-proceso{
+        font-size:38px;
+    }
+}
+
+/* =========================
+   PREGUNTAS
+========================= */
+
+#preguntas.section {
+    padding:70px 70px;
+    background:#fff;
+}
+
+#preguntas .titulo {
+    font-size:50px;
+    margin-bottom:40px;
+    text-align:left;
+}
+
+/* CONTENEDOR GENERAL */
+.preguntas-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* GRID */
+.preguntas-grid {
+    display: flex;
+    gap: 90px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+/* CABECERA IZQUIERDA */
+.preguntas-header {
+    flex: 0.8;
+    text-align: left;
+}
+
+.preguntas-titulo {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.preguntas-subtitulo {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* FAQ */
+.preguntas-faq {
+    flex: 1.4;
+}
+
+/* ITEM */
+.preguntas-item {
+    border-bottom: 1px solid #e5e5e5;
+    transition: border-color 0.3s ease;
+}
+
+/* PREGUNTA */
+.preguntas-pregunta {
+    width: 100%;
+    text-align: left;
+    padding: 18px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    color: #111;
+    transition: color 0.3s ease;
+}
+
+.preguntas-item.activo .preguntas-pregunta {
+    color: #5ab9c1;
+}
+
+/* HOVER */
+.preguntas-pregunta:hover {
+    color: #5ab9c1;
+}
+
+/* RESPUESTA */
+.preguntas-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 15px;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+/* ACTIVO */
+
+.preguntas-item.activo {
+    border-bottom: 1px solid #5ab9c1;
+
+}
+
+.preguntas-item.activo .preguntas-respuesta {
+    max-height: 300px;
+    opacity: 1;
+    padding: 0 15px 18px;
+}
+
+.preguntas-btn-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .preguntas-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+/* =========================
+   FOOTER
+========================= */
+footer {
+    text-align: center;
+    padding: 10px;
+}
+
+footer img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="header">
+
+    <div class="header-content">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="#bloque-hero">
+                <img src="Imagenes/logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="header-title">
+            <strong class="negrita">Smart</strong>Live
+        </div>
+
+        <!-- MENÚ -->
+        <nav class="menu">
+
+            <a href="#especializaciones" class="boton-menu">
+                Especializaciones
+            </a>
+
+            <a href="#proyectos" class="boton-menu">
+                Proyectos
+            </a>
+
+            <a href="#equipo" class="boton-menu">
+                Equipo
+            </a>
+
+            <a href="#proceso" class="boton-menu">
+                ¿Cómo trabajamos?
+            </a>
+
+            <a href="#preguntas" class="boton-menu">
+                Preguntas
+            </a>
+
+            <a href="contactanos.html" class="boton-menu-contacto">
+                Contáctanos
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</header>
+
+<!-- =========================
+     MAIN
+========================= -->
+<main class="contenido">
+
+    <section class="bloque-hero" id="bloque-hero">
+
+        <!-- IMAGEN IZQUIERDA -->
+        <div class="bloque-img">
+            <img src="Imagenes/hero.webp">
+        </div>
+
+        <!-- CONTENIDO DERECHA -->
+        <div class="bloque-texto">
+
+            <h1 class="titulo-principal">
+                <strong class="negrita">Smart</strong>Live
+            </h1>
+
+            <div class="bloque-seccion">
+                <h2>Desarrollo y Gestión de proyectos I+D+i</h2>
+                <p>
+                    Desarrollo integral (end-to-end): diseño, ingeniería, prototipado, validación y despliegue.
+                </p>
+            </div>
+
+            <div class="bloque-seccion">
+                <h2>¿Tienes un proyecto? ¡Pregúntanos!</h2>
+
+                <p>
+                    Desarrollamos y gestionamos íntegramente tu proyecto.
+                    Te ayudamos en el diseño, la puesta en marcha y la comercialización del producto.
+                    Tú únicamente cuéntanos tu idea y nosotros te ayudamos en todo lo demás.
+                </p>
+                <br>
+                <br>
+                <div class="btn-wrapper">
+                    <a href="contactanos.html" class="btn-contacto">
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="especializaciones" id="especializaciones">
+
+        <h2 class="titulo-especializaciones">ESPECIALIZACIONES</h2>
+
+        <div class="slider-container">
+
+            <button class="slider-btn left" onclick="moverSlider(-1)">🡠</button>
+
+            <div class="slider-viewport">
+                <div class="slider-track" id="sliderTrack">
+
+                    <div class="especialidad">
+                        <h3>Control de entornos domotizados por IA </h3>
+                        <img src="Imagenes/domotica_angel.jpg" alt="">
+                    </div>
+
+                    <div class="especialidad">
+                        <h3>Museística</h3>
+                        <img src="Imagenes/museo_angel.jpg" alt="">
+                    </div>
+
+                    <div class="especialidad">
+                        <h3>Creación de software con herramientas IA</h3>
+                        <img src="Imagenes/softwareai_angel.jpg" alt="">
+                    </div>
+
+                    <div class="especialidad">
+                        <h3>Modelado e impresión 3D </h3>
+                        <img src="Imagenes/impresora_angel.webp" alt="">
+                    </div>
+
+                    <div class="especialidad">
+                        <h3>Animaciones 3D</h3>
+                        <img src="Imagenes/anim_angel.webp" alt="">
+                    </div>
+
+                    <div class="especialidad">
+                        <h3>Robótica</h3>
+                        <img src="Imagenes/robotica_angel.jpg" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="slider-btn right" onclick="moverSlider(1)">🡢</button>
+
+        </div>
+
+    </section>
+
+    <section class="proyectos" id="proyectos">
+
+        <h2 class="titulo-proyectos">PROYECTOS</h2>
+
+        <!-- GRID 1 -->
+        <div class="grid-proyectos">
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="Imagenes/alberca.png" alt="">
+                        <h3>Proyecto 1</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 1</h3>
+                        <p>Sistema de automatización inteligente para hogares conectados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="Imagenes/castronunho.jpg" alt="">
+                        <h3>Proyecto 2</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 2</h3>
+                        <p>Plataforma IoT para control energético en tiempo real.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="Imagenes/dianas.png" alt="">
+                        <h3>Proyecto 3</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 3</h3>
+                        <p>Aplicación de monitorización de datos industriales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="Imagenes/higia.png" alt="">
+                        <h3>Proyecto 4</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 4</h3>
+                        <p>Red de sensores para ciudades inteligentes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="Imagenes/sabinar.png" alt="">
+                        <h3>Proyecto 5</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 5</h3>
+                        <p>Plataforma cloud de gestión de dispositivos conectados.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- GRID 2 (oculto inicialmente) -->
+        <div class="grid-proyectos extra" id="extraProyectos">
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="https://via.placeholder.com/200" alt="">
+                        <h3>Proyecto 6</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 6</h3>
+                        <p>Sistema de análisis predictivo con IA.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="https://via.placeholder.com/200" alt="">
+                        <h3>Proyecto 7</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 7</h3>
+                        <p>Control de acceso biométrico inteligente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="https://via.placeholder.com/200" alt="">
+                        <h3>Proyecto 8</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 8</h3>
+                        <p>Automatización de procesos industriales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="https://via.placeholder.com/200" alt="">
+                        <h3>Proyecto 9</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 9</h3>
+                        <p>Sistema de gestión de energía renovable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="https://via.placeholder.com/200" alt="">
+                        <h3>Proyecto 10</h3>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Proyecto 10</h3>
+                        <p>Red de comunicación IoT para agricultura.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="btn-proyectos-wrapper">
+            <button class="btn-toggle" onclick="toggleProyectos()">
+                Ver más
+            </button>
+        </div>
+
+    </section>
+
+    <section class="equipo" id="equipo">
+
+        <h2 class="titulo">EQUIPO</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=1" alt="">
+                
+                <div class="nombre-bajo">Lucas Roche</div>
+
+                <div class="info">
+                    <h3>Lucas Roche</h3>
+                    <p>Ingeniera especializada en IoT y sistemas inteligentes.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=2" alt="">
+                
+                <div class="nombre-bajo">David Martín</div>
+
+                <div class="info">
+                    <h3>David Martín</h3>
+                    <p>Full-stack developer enfocado en cloud y arquitectura escalable.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=3" alt="">
+                
+                <div class="nombre-bajo">Diego Miguel Moya</div>
+
+                <div class="info">
+                    <h3>Diego Miguel Moya</h3>
+                    <p>Diseño UX/UI centrado en experiencia de usuario.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=4" alt="">
+                
+                <div class="nombre-bajo">Javier Ruiz</div>
+
+                <div class="info">
+                    <h3>Javier Ruiz</h3>
+                    <p>Especialista en sistemas embebidos y hardware inteligente.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=5" alt="">
+                
+                <div class="nombre-bajo">Elena Sánchez</div>
+
+                <div class="info">
+                    <h3>Elena Sánchez</h3>
+                    <p>Gestión de proyectos tecnológicos y desarrollo de negocio.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pravatar.cc/300?img=6" alt="">
+                
+                <div class="nombre-bajo">Carlos Vega</div>
+
+                <div class="info">
+                    <h3>Carlos Vega</h3>
+                    <p>Arquitectura de software y desarrollo backend escalable.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="bloque-equipo-intro">
+        <h2>Sobre nosotros</h2>
+        <p>
+            Somos un equipo formado por jóvenes apasionados por la tecnología, el diseño y la innovación.<br>
+            Nos mueve la curiosidad, las ganas de aprender y la ambición de crear soluciones que realmente aporten valor.<br>
+            Creemos en el trabajo en equipo, en la mejora constante y en convertir ideas en proyectos reales.
+        </p>
+        <br>
+        <br>
+
+    </section>
+
+    <section class="proceso" id="proceso">
+
+        <h2 class="titulo-proceso">¿CÓMO TRABAJAMOS?</h2>
+
+        <div class="proceso-grid">
+
+            <!-- TARJETA 1 -->
+            <div class="proceso-card">
+                <div class="proceso-numero">01</div>
+
+                <h3>Dinos exactamente lo que necesitas</h3>
+
+                <p>
+                    Cuéntanos cuáles son tus necesidades, tu idea o el problema que quieres resolver.
+                    Analizamos tu proyecto de forma personalizada para encontrar la mejor solución.
+                </p>
+            </div>
+
+            <!-- TARJETA 2 -->
+            <div class="proceso-card">
+                <div class="proceso-numero">02</div>
+
+                <h3>Diseñamos la solución</h3>
+
+                <p>
+                    Nuestro equipo planifica la arquitectura, el desarrollo y las tecnologías necesarias
+                    para construir un proyecto eficiente, escalable e innovador.
+                </p>
+            </div>
+
+            <!-- TARJETA 3 -->
+            <div class="proceso-card">
+                <div class="proceso-numero">03</div>
+
+                <h3>Desarrollamos tu proyecto</h3>
+
+                <p>
+                    Ponemos en marcha todo el proceso de desarrollo, prototipado y validación,
+                    manteniéndote informado durante cada fase del proyecto.
+                </p>
+            </div>
+
+            <!-- TARJETA 4 -->
+            <div class="proceso-card">
+                <div class="proceso-numero">04</div>
+
+                <h3>Lanzamiento y soporte</h3>
+
+                <p>
+                    Entregamos el proyecto completamente funcional y te acompañamos
+                    en la implementación, mantenimiento y evolución futura.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="preguntas" class="section">
+
+        <h2 class="titulo">PREGUNTAS FRECUENTES</h2>
+
+        <div class="preguntas-container">
+
+            <div class="preguntas-grid">
+
+                <div class="preguntas-header">
+                    <h2 class="preguntas-titulo">
+                        Pregúntanos,<br> NOSOTROS RESPONDEMOS
+                    </h2>
+                    <p class="preguntas-subtitulo">
+                        Nuestro equipo está a tu disposición, cuéntanos tus dudas.
+
+                        <div class="preguntas-btn-wrapper">
+                            <a href="contactanos.html" class="btn-contacto">
+                                Contáctanos
+                            </a>
+                        </div>
+                    </p>
+                </div>
+
+                <div class="preguntas-faq">
+
+                    <div class="preguntas-item">
+                        <button class="preguntas-pregunta">¿Cómo funciona el proceso?</button>
+                        <div class="preguntas-respuesta">Cuéntanos tu idea. Nuestros técnicos planificarán cuales son las soluciones que mejor se adaptan a tu proyecto. Realizaremos un presupuesto personalizado y adaptado a tu proyecto. Una vez nos apruebes el presupuesto, nuestro departamento de desarrollo se pondrá en marcha y te facilitaremos un planning de trabajo con la fecha estimada de entrega.</div>
+                    </div>
+
+                    <div class="preguntas-item">
+                        <button class="preguntas-pregunta">¿Con cuánta anticipación debo programar mi proyecto?</button>
+                        <div class="preguntas-respuesta">Trabajamos sobre proyectos 100% personalizados con lo cual no podemos estimar el tiempo de su puesta en marcha, hasta que no conocemos íntegramente el proyecto.</div>
+                    </div>
+
+                    <div class="preguntas-item">
+                        <button class="preguntas-pregunta">¿Cuánto cuesta?</button>
+                        <div class="preguntas-respuesta">Al trabajar sobre proyectos 100% personalizados no podemos estimar el coste de los mismos hasta que no les conozcamos íntegramente.</div>
+                    </div>
+
+                    <div class="preguntas-item">
+                        <button class="preguntas-pregunta">¿Qué sucede si algo no funciona?</button>
+                        <div class="preguntas-respuesta">Si por alguna causa no pudiéramos llevar a cabo el proyecto, valoraremos los ítems conseguidos y solo tendrás que abonar la parte del proyecto que se ha conseguido llevar a cabo.</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <img src="Imagenes/footer.png" alt="Footer">
+</footer>
+
+<script>
+
+/* PROGRESS BAR SCROLL */
+window.onscroll = function(){
+
+    let scrollTop =
+        document.documentElement.scrollTop;
+
+    let scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    let progress =
+        (scrollTop / scrollHeight) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+};
+
+/* VER MÁS EN PROYECTOS */
+function toggleProyectos(){
+
+    const extra = document.getElementById("extraProyectos");
+    const btn = document.querySelector(".btn-toggle");
+
+    extra.classList.toggle("activo");
+
+    if(extra.classList.contains("activo")){
+        btn.textContent = "Ver menos";
+    } else {
+        btn.textContent = "Ver más";
+    }
+}
+
+/* BAJAR RESPUESTAS */
+document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll(".preguntas-item");
+
+    items.forEach(item => {
+        const pregunta = item.querySelector(".preguntas-pregunta");
+
+        pregunta.addEventListener("click", () => {
+            item.classList.toggle("activo");
+        });
+    });
+});
+
+/* LIBRO ESPECIALIZACIONES */
+function moverSlider(direccion){
+
+    const track = document.getElementById("sliderTrack");
+
+    const cardWidth = 400; // mismo ancho que .especialidad
+    const gap = 0;
+
+    // evita clicks mientras anima
+    if(track.classList.contains("animando")) return;
+
+    track.classList.add("animando");
+
+    track.style.transition =
+        "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)";
+
+    if(direccion === 1){
+
+        // mueve hacia izquierda
+        track.style.transform =
+            `translateX(-${cardWidth + gap}px)`;
+
+        track.addEventListener("transitionend", function handler(){
+
+            track.removeEventListener("transitionend", handler);
+
+            const first = track.firstElementChild;
+            track.appendChild(first);
+
+            track.style.transition = "none";
+            track.style.transform = "translateX(0)";
+
+            requestAnimationFrame(() => {
+                track.classList.remove("animando");
+            });
+        });
+
+    } else {
+
+        const last = track.lastElementChild;
+
+        track.style.transition = "none";
+        track.prepend(last);
+
+        track.style.transform =
+            `translateX(-${cardWidth + gap}px)`;
+
+        requestAnimationFrame(() => {
+
+            requestAnimationFrame(() => {
+
+                track.style.transition =
+                    "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)";
+
+                track.style.transform = "translateX(0)";
+            });
+        });
+
+        track.addEventListener("transitionend", function handler(){
+
+            track.removeEventListener("transitionend", handler);
+
+            track.classList.remove("animando");
+        });
+    }
+}
+
+</script>
+
+</body>
+</html>
