@@ -134,16 +134,16 @@ input:focus, textarea:focus {
 /* COLUMNA MAPA */
 /* Ajuste de la columna derecha */
 .mapa {
-    padding: 0 !important; /* Quitamos cualquier padding que empuje el mapa */
+    padding: 0 !important; 
     position: relative;
-    height: 100%; /* Obligamos a la columna a llenar el espacio */
-    min-height: 400px; /* Importante para que no colapse */
+    height: 100%; 
+    min-height: 400px; 
     background: #e5e3df;
-    display: flex; /* Ayuda a centrar contenido */
+    display: flex; 
 }
 
 .mapa iframe {
-    position: absolute; /* Lo sacamos del flujo para que llene el padre */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100% !important;
@@ -156,15 +156,15 @@ input:focus, textarea:focus {
 /* El cuadro de texto "Headquarters" */
 .overlay-mapa {
     position: absolute;
-    bottom: 30px; /* Subimos un poco para que respire */
+    bottom: 30px; 
     left: 30px;
     background: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    z-index: 10; /* Aseguramos que esté por encima del mapa */
+    z-index: 10; 
     border-left: 5px solid #5ab9c1;
-    pointer-events: none; /* Para que puedas arrastrar el mapa "debajo" del cuadro */
+    pointer-events: none;
 }
 @media (max-width: 1100px) {
     .vidrio-contacto { grid-template-columns: 1fr; margin: 20px; }

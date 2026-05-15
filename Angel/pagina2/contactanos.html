@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>SmartLive</title>
+
+<style>
+
+@font-face {
+    font-family: 'Averta Std';
+    src: url('fonts/averta-std/AvertaStd-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Averta Std', Arial, sans-serif;
+}
+
+body{
+    background:#fff;
+}
+
+/* =========================
+   HEADER FIJO
+========================= */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* CONTENIDO HEADER */
+.header-content{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo{
+    width:140px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logo img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+/* LINK DEL LOGO */
+.logo a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+}
+
+/* IMAGEN */
+.logo img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+.header-title{
+    flex:1;
+    text-align:center;
+    font-size:34px;
+    font-weight:bold;
+    color:#222;
+}
+
+/* =========================
+   MENÚ
+========================= */
+.menu{
+    display:flex;
+    gap:12px;
+}
+
+/* BOTONES NORMALES */
+.boton-menu{
+    padding:10px 18px;
+    border:none;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    transition:0.2s ease;
+    font-size:20px;
+}
+
+/* BOTONES NORMALES */
+.boton-menu{
+    position:relative;
+    padding:10px 18px;
+    border:none;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    font-size:20px;
+    transition:0.2s ease;
+}
+
+/* LÍNEA SUBRAYADA */
+.boton-menu::after{
+    content:"";
+    position:absolute;
+    left:18px;
+    bottom:6px;
+    width:calc(100% - 36px);
+    height:2px;
+    background:#5ab9c1;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.4s ease;
+}
+
+/* HOVER */
+.boton-menu:hover::after{
+    transform:scaleX(1);
+}
+
+/* =========================
+   BOTÓN CONTACTO
+========================= */
+.boton-menu-contacto{
+    position:relative;
+    padding:10px 18px;
+    background:#fff;
+    color:#000;
+    font-size:20px;
+    cursor:pointer;
+    border:2px solid #000;
+    border-radius:12px;
+    transition:border-color 0.8s ease;
+}
+
+/* CAPA DEL BORDE AZUL */
+.boton-menu-contacto::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border:2px solid #5ab9c1;
+    border-radius:12px;
+    clip-path: inset(0 100% 0 0);
+    transition:clip-path 0.8s linear;
+    pointer-events:none;
+}
+
+/* HOVER */
+.boton-menu-contacto:hover{
+    border-color:transparent;
+}
+
+.boton-menu-contacto:hover::before{
+    clip-path: inset(0 0 0 0);
+}
+
+/* =========================
+   ANIMACIÓN PROGRESIVA
+========================= */
+@keyframes borderDraw{
+
+    0%{
+        clip-path: inset(0 100% 100% 0);
+    }
+
+    25%{
+        clip-path: inset(0 0 100% 0);
+    }
+
+    50%{
+        clip-path: inset(0 0 0 0);
+    }
+
+    100%{
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.progress-container{
+    width:100%;
+    height:5px;
+    background:#e5e5e5;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #5ab9c1,
+        #b7e1e3
+    );
+
+    transition:width 0.1s linear;
+}
+
+/* SCROLL SUAVE */
+html{
+    scroll-behavior:smooth;
+}
+
+/* EVITA QUE EL HEADER TAPE LAS SECCIONES */
+section{
+    scroll-margin-top:70px;
+}
+
+/* QUITAR SUBRAYADO LINKS */
+.menu a,
+.logo a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 10px;
+}
+
+footer img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/* ================= CONTACTO ================= */
+
+.contacto-section{
+    padding: 120px 40px;
+    display:flex;
+    justify-content:center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contacto-container{
+    display:flex;
+    max-width:1400px;
+    width:100%;
+    background:#b7e1e3;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* IMAGEN */
+.contacto-img{
+    flex:1;
+}
+
+.contacto-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* FORM */
+.contacto-form{
+    flex:1;
+    padding:60px;
+    color:#000;
+}
+
+/* TITULO */
+.contacto-form h2{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+/* SUBTEXTO */
+.contacto-subtexto{
+    font-size:16px;
+    margin-bottom:30px;
+    opacity:0.9;
+    line-height:1.5;
+}
+
+/* CAMPOS */
+.contacto-form input,
+.contacto-form textarea{
+    width:100%;
+    padding:14px 16px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+/* TEXTAREA */
+.contacto-form textarea{
+    min-height:120px;
+    resize:none;
+}
+
+/* FOCUS */
+.contacto-form input:focus,
+.contacto-form textarea:focus{
+    box-shadow:0 0 0 2px #333;
+}
+
+/* BOTÓN */
+.contacto-form button{
+    width:100%;
+    padding:14px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+/* HOVER */
+.contacto-form button:hover{
+    transform:scale(1.03);
+    background:#222;
+}
+
+/* FOOTER TEXTO */
+.contacto-footer{
+    margin-top:15px;
+    font-size:13px;
+    opacity:0.8;
+    text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .contacto-container{
+        flex-direction:column;
+    }
+
+    .contacto-img{
+        height:220px;
+    }
+
+    .contacto-form{
+        padding:30px;
+    }
+}
+
+
+/* COLUMNA MAPA */
+/* Ajuste de la columna derecha */
+.mapa {
+    padding: 0 !important; 
+    position: relative;
+    height: 100%; 
+    min-height: 400px; 
+    background: #e5e3df;
+    display: flex; 
+}
+
+.mapa iframe {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+    display: block;
+    filter: grayscale(0.2) contrast(1.1) brightness(0.9);
+}
+
+/* El cuadro de texto "Headquarters" */
+.overlay-mapa {
+    position: absolute;
+    bottom: 30px; 
+    left: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 10; 
+    border-left: 5px solid #5ab9c1;
+    pointer-events: none;
+}
+@media (max-width: 1100px) {
+    .vidrio-contacto { grid-template-columns: 1fr; margin: 20px; }
+    body { height: auto; padding: 100px 0; }
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="header">
+
+    <div class="header-content">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="index.html#bloque-hero">
+                <img src="Imagenes/logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="header-title">
+            <strong>Smart</strong>Live
+        </div>
+
+        <!-- MENÚ -->
+        <nav class="menu">
+
+            <a href="index.html#especializaciones" class="boton-menu">
+                Especializaciones
+            </a>
+
+            <a href="index.html#proyectos" class="boton-menu">
+                Proyectos
+            </a>
+
+            <a href="index.html#equipo" class="boton-menu">
+                Equipo
+            </a>
+
+            <a href="index.html#proceso" class="boton-menu">
+                ¿Cómo trabajamos?
+            </a>
+
+            <a href="index.html#preguntas" class="boton-menu">
+                Preguntas
+            </a>
+
+            <a href="contactanos.html" class="boton-menu-contacto">
+                Contáctanos
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</header>
+
+<main>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contacto-section" id="contacto">
+
+    <div class="contacto-container">
+
+        <!-- IZQUIERDA IMAGEN -->
+        <div class="contacto-img">
+            <section class="columna mapa">
+                <!--
+                <div class="overlay-mapa">
+                    <p style="font-family: 'Orbitron'; margin: 0; font-size: 0.8rem; font-weight: bold;">DIRECCION</p>
+                    <small style="color: #888;">Calle Gerona 4, Valladolid</small>
+                </div>
+                -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.4241042732486!2d-4.7291122!3d41.6465492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd475c024d9c0251%3A0x633513a9686036f0!2sC.%20Gerona%2C%204%2C%2047004%20Valladolid!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </section>
+        </div>
+
+        <!-- DERECHA FORM -->
+        <div class="contacto-form">
+
+            <h2>Hablemos de tu proyecto</h2>
+
+            <p class="contacto-subtexto">
+                Cuéntanos tu idea y te responderemos lo antes posible.
+            </p>
+
+            <form>
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <textarea placeholder="Mensaje" required></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+
+            <p class="contacto-footer">
+                Habla con un equipo profesional desde el primer instante.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+<footer>
+    <img src="Imagenes/footer.png" alt="Footer">
+</footer>
+
+<script>
+
+/* PROGRESS BAR SCROLL */
+window.onscroll = function(){
+
+    let scrollTop =
+        document.documentElement.scrollTop;
+
+    let scrollHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    let progress =
+        (scrollTop / scrollHeight) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+};
+
+</script>
+
+</body>
+</html>
